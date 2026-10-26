@@ -1,0 +1,386 @@
+{
+  "$schema": "../runtime/workflow.schema.json",
+  "id": "agent",
+  "name": "Agent — concevoir, construire un palier, revoir",
+  "description": "Pipeline de construction d'un agent par paliers, en 3 nœuds. Le premier est INTERACTIF et court : le besoin, l'accès à l'outil réel, la limite de la machine, ce qui rend un palier prêt, les consignes réelles de l'utilisateur ; l'agent propose seul le palier 1. Le deuxième est AUTONOME sur un serveur : un palier par lancement — données du palier, entraînement, vérificateur indépendant qui rejoue les vraies consignes dans le vrai outil, préversion et fiche de version. Le troisième est la revue de l'utilisateur dans son outil : « bon » passe le palier en production, puis palier suivant ou arrêt ; des retours relancent la construction sur ce palier. Le graphe EST la vérité exécutable.",
+  "workspace_root": "~/agent-runs",
+  "nodes": [
+    {
+      "id": "concevoir",
+      "n": 1,
+      "type": "local",
+      "name": "Concevoir",
+      "modele": "opus",
+      "entree": [],
+      "objectif": "Une seule conversation, la plus courte possible, qui fixe le besoin et propose le palier 1 : quatre questions seulement (le besoin, l'accès à l'outil réel, la limite de la machine, ce qui rend un palier prêt), les consignes réelles de l'utilisateur enregistrées, puis le palier 1 proposé et montré par l'agent, sans le faire valider.",
+      "consignes": [
+        "agent-concevoir"
+      ],
+      "tools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash",
+        "Glob",
+        "Grep",
+        "TodoWrite",
+        "WebSearch",
+        "WebFetch",
+        "Skill"
+      ],
+      "taches": [
+        "Recueillir le besoin mot pour mot et écrire la vision",
+        "Constater l'accès à l'outil réel",
+        "Enregistrer les consignes réelles de l'utilisateur",
+        "Fixer la limite de la machine",
+        "Fixer ce qui rend un palier prêt à être présenté",
+        "Proposer et montrer le palier 1"
+      ],
+      "taches_detail": [
+        {
+          "titre": "Recueillir le besoin mot pour mot et écrire la vision",
+          "par": "l'utilisateur, puis l'agent",
+          "objectif": "Savoir ce que l'agent final saura faire, dans les mots de l'utilisateur",
+          "livrable": "docs/agent/besoin.md — la citation du besoin, puis la vision en points courts",
+          "detail": "Le premier message de l'utilisateur EST le besoin : aucune question avant. La vision se déduit, elle ne se fait pas valider.",
+          "si_succes": "1.2",
+          "si_echec": "besoin trop vague pour nommer une seule action de l'agent : une question A/B/C/D sur l'action la plus utile"
+        },
+        {
+          "titre": "Constater l'accès à l'outil réel",
+          "par": "l'agent, une question si besoin",
+          "objectif": "Pouvoir rejouer une consigne dans le vrai outil, sans quoi aucun palier ne se vérifie",
+          "livrable": "docs/agent/acces-outil.json — l'outil, l'URL, la commande qui rejoue une consigne, la préversion, la production, la fiche, et ce qu'on a vu en rejouant une consigne",
+          "detail": "Chercher d'abord ce qui existe (dossiers, configs, dépôts) ; ne demander que ce qui ne se retrouve pas. Rejouer UNE consigne pour de vrai avant d'écrire `constate`.",
+          "si_succes": "1.3",
+          "si_echec": "aucun accès constaté : demander l'accès en A/B/C/D, sans lui rien ne continue"
+        },
+        {
+          "titre": "Enregistrer les consignes réelles de l'utilisateur",
+          "par": "l'utilisateur dans son outil, puis l'agent",
+          "objectif": "Avoir le test de tous les paliers : des phrases dites pour de vrai, jamais générées",
+          "livrable": "docs/agent/consignes-reelles.jsonl et docs/agent/catalogue.json — une consigne par ligne avec son attendu ; les commandes lues dans l'outil réel",
+          "detail": "Une séance d'usage réel d'une dizaine de minutes : l'utilisateur se sert de son outil en parlant à l'agent. Des consignes réelles existent déjà pour ce projet : les reprendre, dire combien, et ne demander une séance que si elles manquent. Le catalogue se lit dans l'outil, sa couverture se vérifie sur les consignes.",
+          "si_succes": "1.4",
+          "si_echec": "pas de séance possible et aucune consigne réelle : la run s'arrête là — un test généré ne mesure rien"
+        },
+        {
+          "titre": "Fixer la limite de la machine",
+          "par": "l'utilisateur, une question A/B/C/D",
+          "objectif": "Savoir où l'agent tournera : taille et temps de réponse qu'il ne doit pas dépasser",
+          "livrable": "docs/agent/reponses.json — clé `machine` : la citation, la taille maximale, le temps de réponse maximal, la machine",
+          "si_succes": "1.5",
+          "si_echec": "une limite déjà connue pour ce projet : la proposer en option A, la réponse la tranche"
+        },
+        {
+          "titre": "Fixer ce qui rend un palier prêt à être présenté",
+          "par": "l'utilisateur, une question A/B/C/D",
+          "objectif": "Que le vérificateur sache seul quand un palier peut partir en revue",
+          "livrable": "docs/agent/reponses.json — clés `besoin`, `acces`, `machine`, `critere` : chacune avec la citation de l'utilisateur ; `critere` porte la part de réussite minimale et le nombre maximal d'actions à tort",
+          "detail": "Options type : A toutes ses consignes réussies, B 9 sur 10 sans aucune action à tort, C 8 sur 10 avec au plus une action à tort, D autre chose.",
+          "si_succes": "1.6"
+        },
+        {
+          "titre": "Proposer et montrer le palier 1",
+          "par": "l'agent",
+          "objectif": "Un premier palier petit et utile, que la construction peut prendre sans rien demander",
+          "livrable": "docs/agent/paliers.json et docs/agent/palier-1.md — le palier 1 : ses commandes, ses consignes de test tirées des consignes réelles, pourquoi celles-là",
+          "detail": "L'agent choisit seul : une dizaine de commandes, les plus utiles d'après les consignes réelles. Il le montre, il ne le fait pas valider. Une ligne propose l'option de la feuille de route complète ; seulement si l'utilisateur la veut, les paliers suivants s'écrivent avec lui.",
+          "si_succes": "contrôle de l'étape, puis lancement de la construction",
+          "si_echec": "une consigne du test sans commande du palier : retirer la consigne du test du palier 1 ou ajouter sa commande"
+        }
+      ],
+      "livrables": [
+        "docs/agent/besoin.md",
+        "docs/agent/reponses.json",
+        "docs/agent/acces-outil.json",
+        "docs/agent/consignes-reelles.jsonl",
+        "docs/agent/catalogue.json",
+        "docs/agent/paliers.json",
+        "docs/agent/palier-1.md"
+      ],
+      "juge": {
+        "type": "presence"
+      },
+      "gate": {
+        "validateur": "agent-concevoir"
+      },
+      "suivant": [
+        "construire"
+      ],
+      "commande_locale": "/agent <projet>   (secours : /agent-start, ou flux-local agent concevoir, puis --push)",
+      "note_locale": "Étape INTERACTIVE : elle se joue en conversation avec l'utilisateur, d'une traite. Le flux ne la lance pas. Point d'entrée : le module `/agent <projet>` ; en secours, le skill `/agent-start`.",
+      "agents": [
+        {
+          "role": "Le concepteur",
+          "competence": "fixe le besoin en quatre questions au plus, enregistre les consignes réelles et propose seul le palier 1",
+          "outils": [
+            "dialogue avec l'utilisateur — une question à la fois, A/B/C + option D ouverte écrite",
+            "lecture-écriture du workspace — Read/Write/Edit/Glob/Grep",
+            "shell / terminal — Bash (rejouer une consigne dans l'outil réel, lire le catalogue)",
+            "recherche en ligne — WebSearch/WebFetch"
+          ],
+          "consignes": [
+            {
+              "nom": "agent-concevoir",
+              "role": "le protocole de l'étape : les quatre questions, les consignes réelles, le palier 1"
+            }
+          ],
+          "contexte": "~120k"
+        }
+      ],
+      "banderole": "FIN DE L'ÉTAPE 1 — CONCEVOIR"
+    },
+    {
+      "id": "construire",
+      "n": 2,
+      "type": "agent",
+      "name": "Construire un palier",
+      "modele": "opus",
+      "entree": [
+        "docs/agent/besoin.md",
+        "docs/agent/reponses.json",
+        "docs/agent/acces-outil.json",
+        "docs/agent/consignes-reelles.jsonl",
+        "docs/agent/catalogue.json",
+        "docs/agent/paliers.json"
+      ],
+      "objectif": "Construire UN palier jusqu'à sa préversion : ses données seules, l'entraînement par le moteur de La boucle (dépôt la-boucle-engine), un vérificateur qui n'a pas construit et rejoue les consignes du test dans le vrai outil, la fiche « sait faire / ne sait pas encore ». Le nœud est relancé par `agent-lancer` tant que son contrôle n'est pas vert. Après une revue à retours, il repart sur le seul tour à traiter.",
+      "consignes": [
+        "agent-construire",
+        "agent-construire.1",
+        "agent-construire.2"
+      ],
+      "tools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash",
+        "Glob",
+        "Grep",
+        "TodoWrite",
+        "Task",
+        "WebSearch",
+        "WebFetch"
+      ],
+      "taches": [
+        "Lire l'avancement et choisir le mode : palier ou retours",
+        "Écrire les données du palier",
+        "Entraîner l'agent du palier",
+        "Rejouer le test du palier dans le vrai outil (vérificateur indépendant)",
+        "Boucler jusqu'au PASS du vérificateur",
+        "Livrer la préversion et sa fiche",
+        "En mode retours : corriger le tour et relivrer"
+      ],
+      "taches_detail": [
+        {
+          "titre": "Lire l'avancement et choisir le mode : palier ou retours",
+          "par": "le chef",
+          "objectif": "Savoir quoi traiter à ce lancement",
+          "livrable": "docs/agent/avancement.json — le mode, le palier courant, le statut de chaque palier",
+          "detail": "Un tour `docs/agent/retours/tour-<N>.json` au statut `a-traiter` → mode retours sur le plus ancien. Sinon le premier palier de `paliers.json` au statut `a-faire` ou `en-cours`. L'état vit dans les fichiers, jamais dans la mémoire d'un agent.",
+          "si_succes": "2.2, ou 2.7 en mode retours",
+          "si_echec": "aucun palier à construire et aucun tour à traiter : écrire `bloque` dans l'avancement et s'arrêter"
+        },
+        {
+          "titre": "Écrire les données du palier",
+          "par": "sous-agent constructeur",
+          "objectif": "Des exemples des seules commandes du palier, des plus évidents aux plus complexes",
+          "livrable": "docs/agent/paliers/p<N>/donnees/entrainement.jsonl et docs/agent/paliers/p<N>/test.jsonl — les données d'entraînement ; le test recopié des consignes réelles",
+          "detail": "La bonne réponse de chaque exemple est fixée par le catalogue ou l'outil réel, jamais par celui qui écrit la phrase. Chaque lot est relu sur un échantillon avant de servir. Aucune phrase du test dans l'entraînement.",
+          "si_succes": "2.3"
+        },
+        {
+          "titre": "Entraîner l'agent du palier",
+          "par": "sous-agent constructeur",
+          "objectif": "Un agent qui réussit le test du palier dans la limite de la machine",
+          "livrable": "docs/agent/paliers/p<N>/journal.md — chaque entraînement lancé, sa commande, ses mesures",
+          "detail": "Moteur, juge et harnais de La boucle (`python3 -m boucle`, dépôt la-boucle-engine) ; travail lourd en CPU derrière le préfixe AGENT_LIMITEUR s'il est réglé. La mesure de travail se fait sur l'entraînement et une part tenue à part, jamais sur le test du palier.",
+          "si_succes": "2.4",
+          "si_echec": "la limite de la machine ne tient pas : l'écrire au journal avec la mesure et réduire le palier, jamais la limite"
+        },
+        {
+          "titre": "Rejouer le test du palier dans le vrai outil (vérificateur indépendant)",
+          "par": "sous-agent vérificateur",
+          "objectif": "Savoir, sans le constructeur, si le palier tient sur les vraies consignes",
+          "livrable": "docs/agent/paliers/p<N>/verification.json — chaque consigne rejouée, l'attendu, l'obtenu, la réussite, les actions à tort, le verdict",
+          "detail": "Agent frais qui n'a rien construit. Il rejoue chaque consigne du test par la commande `rejouer` de `acces-outil.json` et compte ce que l'outil a VRAIMENT fait.",
+          "si_succes": "2.6 sur PASS",
+          "si_echec": "2.5"
+        },
+        {
+          "titre": "Boucler jusqu'au PASS du vérificateur",
+          "par": "le chef",
+          "objectif": "Corriger sur les écarts nommés, sans jamais toucher au test",
+          "livrable": "docs/agent/paliers/p<N>/journal.md — chaque cycle constructeur → vérificateur et ses écarts",
+          "detail": "FAIL → le constructeur repart avec la liste des écarts, puis un vérificateur FRAIS rejoue. Trois cycles au plus.",
+          "si_succes": "2.6",
+          "si_echec": "trois cycles sans PASS : écrire `bloque` dans l'avancement avec les écarts restants"
+        },
+        {
+          "titre": "Livrer la préversion et sa fiche",
+          "par": "le chef",
+          "objectif": "Que l'utilisateur puisse essayer le palier dans son outil, en sachant ce qu'il sait faire",
+          "livrable": "docs/agent/paliers/p<N>/fiche.md et docs/agent/versions.json — « sait faire / ne sait pas encore » ; la version livrée et son emplacement",
+          "detail": "Commande `preversion` de `acces-outil.json`, jamais `production`. Le palier passe à `preversion` dans `paliers.json` et dans l'avancement.",
+          "si_succes": "fin du nœud — place à la revue"
+        },
+        {
+          "titre": "En mode retours : corriger le tour et relivrer",
+          "par": "le chef et ses sous-agents",
+          "objectif": "Que chaque retour de l'utilisateur soit corrigé et vérifié dans l'outil",
+          "livrable": "docs/agent/retours/tour-<N>.json — statut `traite` ; une nouvelle version dans docs/agent/versions.json",
+          "detail": "Chaque `attendu` est vérifié par un vérificateur frais dans le vrai outil, avec le test du palier rejoué en entier.",
+          "si_succes": "fin du nœud — place à la revue"
+        }
+      ],
+      "livrables": [
+        "docs/agent/avancement.json",
+        "docs/agent/versions.json"
+      ],
+      "juge": {
+        "type": "presence"
+      },
+      "gate": {
+        "validateur": "agent-construire"
+      },
+      "suivant": [
+        "revue"
+      ],
+      "rapport_de_passe": {
+        "chiffres": [
+          "mode: palier ou retours (tour N)",
+          "palier: le palier traité et son statut en fin de passe",
+          "cycles: cycles constructeur → vérificateur joués",
+          "verificateur: verdict, réussite, actions à tort, consignes rejouées",
+          "version: la version livrée en préversion, ou —"
+        ],
+        "a_dire": [
+          "Ce que le vérificateur a refusé et comment le constructeur l'a corrigé",
+          "Ce que l'agent sait faire et ne sait pas encore",
+          "Ce qui reste à faire au prochain lancement"
+        ]
+      },
+      "agents": [
+        {
+          "role": "Le chef de palier",
+          "competence": "conduit le palier du choix des données à la préversion sans jamais écrire les données ni vérifier lui-même",
+          "outils": [
+            "équipes d'agents — Task (constructeur, vérificateur)",
+            "shell / terminal — Bash (entraînement, rejeu dans l'outil, préversion)",
+            "lecture-écriture des fichiers d'état — Read/Write/Edit"
+          ],
+          "consignes": [
+            {
+              "nom": "agent-construire",
+              "role": "le cycle du palier, le choix du mode, l'avancement, les règles du chef"
+            },
+            {
+              "nom": "agent-construire.1",
+              "role": "le constructeur — données du palier et entraînement"
+            },
+            {
+              "nom": "agent-construire.2",
+              "role": "le vérificateur indépendant — rejoue le test dans le vrai outil"
+            }
+          ],
+          "contexte": "~150k"
+        }
+      ],
+      "note_locale": "Étape autonome : elle tourne sur le serveur, sans toi. `python3 tools/agent-lancer.py <workspace>` la lance et la relance jusqu'au contrôle vert ; `agent-etat.py <workspace>` dit où elle en est."
+    },
+    {
+      "id": "revue",
+      "n": 3,
+      "type": "local",
+      "name": "Revue",
+      "modele": "opus",
+      "entree": [
+        "docs/agent/avancement.json",
+        "docs/agent/versions.json"
+      ],
+      "objectif": "L'utilisateur essaie la préversion dans son vrai outil. « Bon » passe le palier en production avec sa fiche affichée, puis palier suivant ou arrêt ; sinon ses retours deviennent un tour de points vérifiables et la construction repart sur ce palier. Barrière humaine : elle se joue en conversation.",
+      "consignes": [
+        "agent-revue"
+      ],
+      "tools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash",
+        "Glob",
+        "Grep",
+        "TodoWrite"
+      ],
+      "taches": [
+        "Donner la préversion à essayer, avec sa fiche",
+        "Recueillir le verdict, mot pour mot",
+        "Sur des retours : écrire le tour et relancer la construction",
+        "Sur « bon » : mettre en production, puis palier suivant ou arrêt"
+      ],
+      "taches_detail": [
+        {
+          "titre": "Donner la préversion à essayer, avec sa fiche",
+          "par": "l'agent",
+          "objectif": "Que l'utilisateur sache où essayer et quoi essayer",
+          "livrable": "docs/agent/paliers/p<N>/fiche.md — montrée telle quelle, avec l'emplacement de la préversion",
+          "si_succes": "3.2"
+        },
+        {
+          "titre": "Recueillir le verdict, mot pour mot",
+          "par": "l'utilisateur, puis l'agent",
+          "objectif": "Garder la décision dans ses mots",
+          "livrable": "docs/agent/revue.json — le tour, le palier, la version, le verdict, la citation exacte",
+          "si_succes": "3.3 sur des retours, 3.4 sur « bon »"
+        },
+        {
+          "titre": "Sur des retours : écrire le tour et relancer la construction",
+          "par": "l'agent",
+          "objectif": "Que chaque retour devienne un point qu'un vérificateur peut constater dans l'outil",
+          "livrable": "docs/agent/retours/tour-<N>.json et .md — chaque retour : ses mots exacts, la consigne essayée, l'attendu",
+          "detail": "Un retour ambigu se lève par UNE question A/B/C/D. Puis `python3 tools/agent-lancer.py <workspace>`.",
+          "si_succes": "fin de l'étape — la construction repart sur ce palier"
+        },
+        {
+          "titre": "Sur « bon » : mettre en production, puis palier suivant ou arrêt",
+          "par": "l'agent, une question A/B/C/D",
+          "objectif": "Le palier en production, sa fiche visible dans l'outil, et la suite décidée",
+          "livrable": "docs/agent/production.json et docs/agent/paliers.json — la version en production ; le palier suivant proposé au statut `a-faire`, ou l'arrêt",
+          "detail": "Commande `production` de `acces-outil.json`, puis la fiche affichée là où `fiche` le dit. La suite se demande en A palier suivant (l'agent le propose et le montre) / B arrêt / D autre chose.",
+          "si_succes": "palier suivant : `agent-lancer.py` relance la construction ; arrêt : la run est close"
+        }
+      ],
+      "livrables": [
+        "docs/agent/revue.json"
+      ],
+      "juge": {
+        "type": "presence"
+      },
+      "gate": {
+        "validateur": "agent-revue"
+      },
+      "suivant": [],
+      "commande_locale": "/agent <projet>   (secours : /agent-start, ou flux-local agent revue, puis --push)",
+      "note_locale": "Étape INTERACTIVE : l'utilisateur essaie la préversion dans son outil. Des retours ou un palier suivant relancent `construire` par `agent-lancer.py` — la boucle revue → construire est portée par cette commande, pas par le graphe, dont la barrière d'entrée exigerait sinon une revue avant la première construction.",
+      "agents": [
+        {
+          "role": "Le greffier de la revue",
+          "competence": "transforme les mots de l'utilisateur en points vérifiables, met en production sur « bon » et propose le palier suivant",
+          "outils": [
+            "dialogue avec l'utilisateur — une question à la fois, A/B/C + option ouverte écrite",
+            "lecture-écriture de la revue — Read/Write/Edit",
+            "shell / terminal — Bash (production, relance par agent-lancer)"
+          ],
+          "consignes": [
+            {
+              "nom": "agent-revue",
+              "role": "le protocole de la revue : verdict, retours, production, suite"
+            }
+          ],
+          "contexte": "~60k"
+        }
+      ],
+      "banderole": "FIN DE LA REVUE"
+    }
+  ]
+}

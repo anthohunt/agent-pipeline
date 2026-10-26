@@ -1,0 +1,9 @@
+agent-pipeline
+Copyright 2026 Anthony Hunt
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+Documentation, skills (agent instruction files), graph descriptions and the example data are licensed under
+the Creative Commons Attribution 4.0 International license (see LICENSE-docs).
+
+This repository redistributes no third-party library. The dependencies listed in THIRD-PARTY.md are installed
+separately by the user.

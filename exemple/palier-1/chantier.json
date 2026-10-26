@@ -1,0 +1,54 @@
+{
+  "nom": "palier-1-assistant-biblio",
+  "banc": {
+    "entrainement": "donnees/entrainement.jsonl",
+    "examen": "donnees/examen.jsonl"
+  },
+  "harnais_depart": "harnais-0",
+  "sujet": {
+    "commande": [
+      "python3",
+      "sujet.py",
+      "--lot"
+    ],
+    "timeout_s": 60,
+    "mode": "lot"
+  },
+  "comparateur": {
+    "fichier": "comparateur.py",
+    "options": {}
+  },
+  "chercheur": {
+    "commande": [
+      "python3",
+      "chercheur.py"
+    ],
+    "timeout_s": 60
+  },
+  "parallelisme": 4,
+  "largeur": 3,
+  "tours_niveau1_max": 5,
+  "passes_max": 10,
+  "paliers": {
+    "mode": "fixes",
+    "valeurs": [
+      60,
+      70,
+      80,
+      90
+    ]
+  },
+  "sequentiel": {
+    "actif": true,
+    "tranche": 15,
+    "alpha": 0.05
+  },
+  "examen": {
+    "gain_min": 5.0,
+    "echecs_max": 2,
+    "confirmation": true
+  },
+  "objectif": {
+    "examen_min": 85.0
+  }
+}

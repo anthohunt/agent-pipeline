@@ -1,0 +1,48 @@
+{"corrige": {"action": "executer", "args": {"jours": 5}, "commande": "prolonger_pret"}, "critere": "evident", "entree": {"texte": "prolonge le livre de 5 jours rapidement"}, "id": "exa-001"}
+{"corrige": {"action": "executer", "args": {"jours": 21}, "commande": "prolonger_pret"}, "critere": "evident", "entree": {"texte": "rallonge mon emprunt de 21 jours merci"}, "id": "exa-002"}
+{"corrige": {"action": "executer", "args": {}, "commande": "ouvrir_prets"}, "critere": "evident", "entree": {"texte": "affiche mes prêts merci"}, "id": "exa-003"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "renouvelle mon compte"}, "id": "exa-004"}
+{"corrige": {"action": "executer", "args": {"jours": 21}, "commande": "prolonger_pret"}, "critere": "evident", "entree": {"texte": "prolonge le livre de 21 jours merci"}, "id": "exa-005"}
+{"corrige": {"action": "executer", "args": {"jours": 21}, "commande": "prolonger_pret"}, "critere": "evident", "entree": {"texte": "ajoute 21 jours à mon prêt merci"}, "id": "exa-006"}
+{"corrige": {"action": "executer", "args": {"jours": 15}, "commande": "prolonger_pret"}, "critere": "evident", "entree": {"texte": "je voudrais garder mon livre 15 jours de plus rapidement"}, "id": "exa-007"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "réserve mon historique d'emprunts"}, "id": "exa-008"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "paye mon compte"}, "id": "exa-009"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "réserve ma carte d'abonnée"}, "id": "exa-010"}
+{"corrige": {"action": "executer", "args": {}, "commande": "ouvrir_prets"}, "critere": "evident", "entree": {"texte": "je veux voir mes prêts rapidement"}, "id": "exa-011"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "efface ma carte d'abonnée"}, "id": "exa-012"}
+{"corrige": {"action": "executer", "args": {"jours": 3}, "commande": "prolonger_pret"}, "critere": "evident", "entree": {"texte": "prolonge mon prêt de 3 jours merci"}, "id": "exa-013"}
+{"corrige": {"action": "rien", "args": null, "commande": null}, "critere": "rien", "entree": {"texte": "quel beau bâtiment"}, "id": "exa-014"}
+{"corrige": {"action": "executer", "args": {"jours": 14}, "commande": "prolonger_pret"}, "critere": "forme", "entree": {"texte": "peux tu prolonger de 14 jours mon emprunt"}, "id": "exa-015"}
+{"corrige": {"action": "executer", "args": {"jours": 5}, "commande": "prolonger_pret"}, "critere": "forme", "entree": {"texte": "garde le bouquin 5 jours de plus"}, "id": "exa-016"}
+{"corrige": {"action": "rien", "args": null, "commande": null}, "critere": "rien", "entree": {"texte": "je reviens plus tard merci"}, "id": "exa-017"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "paye tous mes prêts"}, "id": "exa-018"}
+{"corrige": {"action": "executer", "args": {}, "commande": "ouvrir_prets"}, "critere": "forme", "entree": {"texte": "liste prets"}, "id": "exa-019"}
+{"corrige": {"action": "rien", "args": null, "commande": null}, "critere": "rien", "entree": {"texte": "super, merci"}, "id": "exa-020"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "paye l'atelier lecture"}, "id": "exa-021"}
+{"corrige": {"action": "rien", "args": null, "commande": null}, "critere": "rien", "entree": {"texte": "merci beaucoup merci"}, "id": "exa-022"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "transfère mon compte"}, "id": "exa-023"}
+{"corrige": {"action": "executer", "args": {"jours": 5}, "commande": "prolonger_pret"}, "critere": "evident", "entree": {"texte": "prolonge mon prêt de 5 jours s'il te plaît"}, "id": "exa-024"}
+{"corrige": {"action": "executer", "args": {"jours": 7}, "commande": "prolonger_pret"}, "critere": "forme", "entree": {"texte": "peux tu prolonger de 7 jours mon emprunt"}, "id": "exa-025"}
+{"corrige": {"action": "rien", "args": null, "commande": null}, "critere": "rien", "entree": {"texte": "tiens, il pleut rapidement"}, "id": "exa-026"}
+{"corrige": {"action": "rien", "args": null, "commande": null}, "critere": "rien", "entree": {"texte": "il fait beau aujourd'hui rapidement"}, "id": "exa-027"}
+{"corrige": {"action": "rien", "args": null, "commande": null}, "critere": "rien", "entree": {"texte": "mon voisin lit beaucoup merci"}, "id": "exa-028"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "inscris-moi à mon compte"}, "id": "exa-029"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "inscris-moi à tous mes prêts"}, "id": "exa-030"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "supprime ma réservation"}, "id": "exa-031"}
+{"corrige": {"action": "executer", "args": {"jours": 3}, "commande": "prolonger_pret"}, "critere": "forme", "entree": {"texte": "peux tu prolonger de 3 jours mon emprunt"}, "id": "exa-032"}
+{"corrige": {"action": "executer", "args": {"jours": 5}, "commande": "prolonger_pret"}, "critere": "forme", "entree": {"texte": "peux tu prolonger de 5 jours mon emprunt"}, "id": "exa-033"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "inscris-moi à ma réservation"}, "id": "exa-034"}
+{"corrige": {"action": "executer", "args": {"jours": 14}, "commande": "prolonger_pret"}, "critere": "forme", "entree": {"texte": "decale le retour de 14 jours"}, "id": "exa-035"}
+{"corrige": {"action": "rien", "args": null, "commande": null}, "critere": "rien", "entree": {"texte": "à tout à l'heure merci"}, "id": "exa-036"}
+{"corrige": {"action": "executer", "args": {"jours": 15}, "commande": "prolonger_pret"}, "critere": "forme", "entree": {"texte": "garde le bouquin 15 jours de plus"}, "id": "exa-037"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "réserve mon amende"}, "id": "exa-038"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "annule ma réservation"}, "id": "exa-039"}
+{"corrige": {"action": "executer", "args": {"jours": 15}, "commande": "prolonger_pret"}, "critere": "forme", "entree": {"texte": "rallonge de 15j"}, "id": "exa-040"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "inscris-moi à mon amende"}, "id": "exa-041"}
+{"corrige": {"action": "executer", "args": {"jours": 14}, "commande": "prolonger_pret"}, "critere": "evident", "entree": {"texte": "ajoute 14 jours à mon prêt merci"}, "id": "exa-042"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "paye ma carte d'abonnée"}, "id": "exa-043"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "renouvelle ma réservation"}, "id": "exa-044"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "renouvelle tous mes prêts"}, "id": "exa-045"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "supprime mon amende"}, "id": "exa-046"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "efface l'atelier lecture"}, "id": "exa-047"}
+{"corrige": {"action": "executer", "args": {}, "commande": "ouvrir_prets"}, "critere": "forme", "entree": {"texte": "kes j'ai emprunté ?"}, "id": "exa-048"}

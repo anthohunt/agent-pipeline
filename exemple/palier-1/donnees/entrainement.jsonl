@@ -1,0 +1,62 @@
+{"corrige": {"action": "executer", "args": {"jours": 15}, "commande": "prolonger_pret"}, "critere": "forme", "entree": {"texte": "decale le retour de 15 jours"}, "id": "ent-001"}
+{"corrige": {"action": "executer", "args": {}, "commande": "ouvrir_prets"}, "critere": "evident", "entree": {"texte": "montre mes prêts en cours merci"}, "id": "ent-002"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "annule mon compte"}, "id": "ent-003"}
+{"corrige": {"action": "executer", "args": {}, "commande": "ouvrir_prets"}, "critere": "forme", "entree": {"texte": "mes emprunts svp"}, "id": "ent-004"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "renouvelle le dernier roman de la rentrée"}, "id": "ent-005"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "annule le dernier roman de la rentrée"}, "id": "ent-006"}
+{"corrige": {"action": "rien", "args": null, "commande": null}, "critere": "rien", "entree": {"texte": "d'accord s'il te plaît"}, "id": "ent-007"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "inscris-moi à mon historique d'emprunts"}, "id": "ent-008"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "renouvelle mon amende"}, "id": "ent-009"}
+{"corrige": {"action": "rien", "args": null, "commande": null}, "critere": "rien", "entree": {"texte": "ma fille adore les contes"}, "id": "ent-010"}
+{"corrige": {"action": "executer", "args": {"jours": 3}, "commande": "prolonger_pret"}, "critere": "forme", "entree": {"texte": "decale le retour de 3 jours"}, "id": "ent-011"}
+{"corrige": {"action": "executer", "args": {"jours": 10}, "commande": "prolonger_pret"}, "critere": "forme", "entree": {"texte": "decale le retour de 10 jours"}, "id": "ent-012"}
+{"corrige": {"action": "executer", "args": {}, "commande": "ouvrir_prets"}, "critere": "evident", "entree": {"texte": "ouvre la liste de mes emprunts merci"}, "id": "ent-013"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "réserve mon compte"}, "id": "ent-014"}
+{"corrige": {"action": "executer", "args": {"jours": 10}, "commande": "prolonger_pret"}, "critere": "forme", "entree": {"texte": "peux tu prolonger de 10 jours mon emprunt"}, "id": "ent-015"}
+{"corrige": {"action": "rien", "args": null, "commande": null}, "critere": "rien", "entree": {"texte": "bonne journée s'il te plaît"}, "id": "ent-016"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "réserve l'atelier lecture"}, "id": "ent-017"}
+{"corrige": {"action": "rien", "args": null, "commande": null}, "critere": "rien", "entree": {"texte": "quelle heure est-il rapidement"}, "id": "ent-018"}
+{"corrige": {"action": "executer", "args": {"jours": 14}, "commande": "prolonger_pret"}, "critere": "evident", "entree": {"texte": "prolonge le livre de 14 jours s'il te plaît"}, "id": "ent-019"}
+{"corrige": {"action": "executer", "args": {"jours": 7}, "commande": "prolonger_pret"}, "critere": "forme", "entree": {"texte": "+7 jours sur mon pret"}, "id": "ent-020"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "renouvelle ma carte d'abonnée"}, "id": "ent-021"}
+{"corrige": {"action": "rien", "args": null, "commande": null}, "critere": "rien", "entree": {"texte": "à tout à l'heure s'il te plaît"}, "id": "ent-022"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "transfère ma réservation"}, "id": "ent-023"}
+{"corrige": {"action": "rien", "args": null, "commande": null}, "critere": "rien", "entree": {"texte": "je réfléchis s'il te plaît"}, "id": "ent-024"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "transfère tous mes prêts"}, "id": "ent-025"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "réserve le dernier roman de la rentrée"}, "id": "ent-026"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "annule ma carte d'abonnée"}, "id": "ent-027"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "paye mon historique d'emprunts"}, "id": "ent-028"}
+{"corrige": {"action": "executer", "args": {"jours": 15}, "commande": "prolonger_pret"}, "critere": "evident", "entree": {"texte": "rallonge mon emprunt de 15 jours rapidement"}, "id": "ent-029"}
+{"corrige": {"action": "executer", "args": {"jours": 3}, "commande": "prolonger_pret"}, "critere": "evident", "entree": {"texte": "ajoute 3 jours à mon prêt"}, "id": "ent-030"}
+{"corrige": {"action": "executer", "args": {"jours": 7}, "commande": "prolonger_pret"}, "critere": "evident", "entree": {"texte": "prolonge mon prêt de 7 jours s'il te plaît"}, "id": "ent-031"}
+{"corrige": {"action": "executer", "args": {"jours": 7}, "commande": "prolonger_pret"}, "critere": "evident", "entree": {"texte": "prolonge le livre de 7 jours rapidement"}, "id": "ent-032"}
+{"corrige": {"action": "executer", "args": {"jours": 15}, "commande": "prolonger_pret"}, "critere": "forme", "entree": {"texte": "+15 jours sur mon pret"}, "id": "ent-033"}
+{"corrige": {"action": "executer", "args": {"jours": 3}, "commande": "prolonger_pret"}, "critere": "forme", "entree": {"texte": "+3 jours sur mon pret"}, "id": "ent-034"}
+{"corrige": {"action": "executer", "args": {"jours": 10}, "commande": "prolonger_pret"}, "critere": "forme", "entree": {"texte": "prolonge 10 j stp"}, "id": "ent-035"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "supprime ma carte d'abonnée"}, "id": "ent-036"}
+{"corrige": {"action": "executer", "args": {"jours": 21}, "commande": "prolonger_pret"}, "critere": "forme", "entree": {"texte": "rallonge de 21j"}, "id": "ent-037"}
+{"corrige": {"action": "executer", "args": {"jours": 7}, "commande": "prolonger_pret"}, "critere": "evident", "entree": {"texte": "rallonge mon emprunt de 7 jours"}, "id": "ent-038"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "montre-moi les nouveautés jeunesse"}, "id": "ent-039"}
+{"corrige": {"action": "executer", "args": {"jours": 10}, "commande": "prolonger_pret"}, "critere": "forme", "entree": {"texte": "garde le bouquin 10 jours de plus"}, "id": "ent-040"}
+{"corrige": {"action": "rien", "args": null, "commande": null}, "critere": "rien", "entree": {"texte": "tiens, il pleut merci"}, "id": "ent-041"}
+{"corrige": {"action": "executer", "args": {"jours": 7}, "commande": "prolonger_pret"}, "critere": "evident", "entree": {"texte": "prolonge mon prêt de 7 jours merci"}, "id": "ent-042"}
+{"corrige": {"action": "rien", "args": null, "commande": null}, "critere": "rien", "entree": {"texte": "quelle heure est-il s'il te plaît"}, "id": "ent-043"}
+{"corrige": {"action": "executer", "args": {"jours": 3}, "commande": "prolonger_pret"}, "critere": "evident", "entree": {"texte": "rallonge mon emprunt de 3 jours merci"}, "id": "ent-044"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "efface mon historique d'emprunts"}, "id": "ent-045"}
+{"corrige": {"action": "executer", "args": {"jours": 10}, "commande": "prolonger_pret"}, "critere": "forme", "entree": {"texte": "+10 jours sur mon pret"}, "id": "ent-046"}
+{"corrige": {"action": "executer", "args": {"jours": 5}, "commande": "prolonger_pret"}, "critere": "evident", "entree": {"texte": "rallonge mon emprunt de 5 jours merci"}, "id": "ent-047"}
+{"corrige": {"action": "executer", "args": {"jours": 21}, "commande": "prolonger_pret"}, "critere": "forme", "entree": {"texte": "peux tu prolonger de 21 jours mon emprunt"}, "id": "ent-048"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "ouvre l'agenda des animations"}, "id": "ent-049"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "annule mon amende"}, "id": "ent-050"}
+{"corrige": {"action": "executer", "args": {"jours": 7}, "commande": "prolonger_pret"}, "critere": "evident", "entree": {"texte": "je voudrais garder mon livre 7 jours de plus"}, "id": "ent-051"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "transfère mon amende"}, "id": "ent-052"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "affiche les nouveautés de la semaine"}, "id": "ent-053"}
+{"corrige": {"action": "executer", "args": {"jours": 5}, "commande": "prolonger_pret"}, "critere": "forme", "entree": {"texte": "decale le retour de 5 jours"}, "id": "ent-054"}
+{"corrige": {"action": "rien", "args": null, "commande": null}, "critere": "rien", "entree": {"texte": "à tout à l'heure rapidement"}, "id": "ent-055"}
+{"corrige": {"action": "executer", "args": {}, "commande": "ouvrir_prets"}, "critere": "evident", "entree": {"texte": "montre mes prêts en cours"}, "id": "ent-056"}
+{"corrige": {"action": "executer", "args": {"jours": 15}, "commande": "prolonger_pret"}, "critere": "forme", "entree": {"texte": "peux tu prolonger de 15 jours mon emprunt"}, "id": "ent-057"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "ouvre le catalogue des bandes dessinées"}, "id": "ent-058"}
+{"corrige": {"action": "executer", "args": {"jours": 5}, "commande": "prolonger_pret"}, "critere": "forme", "entree": {"texte": "rallonge de 5j"}, "id": "ent-059"}
+{"corrige": {"action": "rien", "args": null, "commande": null}, "critere": "rien", "entree": {"texte": "ok"}, "id": "ent-060"}
+{"corrige": {"action": "executer", "args": {}, "commande": "ouvrir_prets"}, "critere": "evident", "entree": {"texte": "affiche mes prêts rapidement"}, "id": "ent-061"}
+{"corrige": {"action": "proposer", "args": null, "commande": null}, "critere": "proche", "entree": {"texte": "inscris-moi à le dernier roman de la rentrée"}, "id": "ent-062"}

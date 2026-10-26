@@ -1,0 +1,98 @@
+{
+  "_role": "Parcours générique d'une run de la pipeline agent en 3 étapes (contrat des fichiers : docs/contrat.md à la racine du dépôt). « qui » : moi (l'utilisateur décide ou agit), agent (l'agent travaille ; la réponse de l'utilisateur à SA question vaut validation), programme (constaté par le programme, sans validation humaine). Les sorties sont relatives au workspace de la run.",
+  "regles_communes": [
+    "Le moins de questions possible : seules quatre questions se posent à l'étape 1 (le besoin, l'accès à l'outil réel, la limite de la machine, ce qui rend un palier prêt). Tout le reste, tu le proposes et tu le montres.",
+    "Une seule question par message ; toute question à choix est en A/B/C avec une option D « autre chose, précise-moi » écrite en clair parmi les autres.",
+    "Ne pose jamais une question dont la réponse se retrouve : cherche d'abord (fichiers de la run, dossiers du projet, configs), puis dis en une ligne ce que tu as trouvé.",
+    "Jamais de validation où l'utilisateur ne ferait que dire oui : sa réponse à une question vaut validation de la sous-étape, citée mot pour mot.",
+    "Chaque réponse de l'utilisateur s'enregistre avec l'outil `decision`, ses mots exacts en citation, sous sa sous-étape.",
+    "Réponses courtes : le résultat d'abord, en points, sans préambule ni conclusion qui répète.",
+    "Quand l'utilisateur demande de revenir sur une sous-étape (souvent depuis le volet), appelle l'outil `rouvrir` avec sa raison, et reprends-la."
+  ],
+  "etapes": [
+    {
+      "n": 1,
+      "titre": "Concevoir",
+      "resume": "Le besoin, l'accès à l'outil réel, les vraies consignes de l'utilisateur, la limite de la machine et ce qui rend un palier prêt ; puis l'agent propose seul le palier 1.",
+      "sous_etapes": [
+        {
+          "id": "E1.1",
+          "titre": "Le besoin",
+          "qui": "moi",
+          "sortie": [],
+          "consigne": "Le prochain message de l'utilisateur EST le besoin (le module le garde seul, mot pour mot, dans docs/agent/besoin.md). Ne demande jamais « que veux-tu faire ? »."
+        },
+        {
+          "id": "E1.2",
+          "titre": "L'accès à l'outil réel",
+          "qui": "agent",
+          "sortie": ["docs/agent/besoin.md", "docs/agent/acces-outil.json"],
+          "consigne": "Complète docs/agent/besoin.md avec la vision (ce que l'agent final saura faire, en points). Cherche d'abord comment joindre l'outil réel et rejouer une consigne dedans (dossiers du projet, configs) ; rejoue UNE consigne pour de vrai et écris docs/agent/acces-outil.json. Une seule question si quelque chose manque, en A/B/C/D ; sinon dis ce que tu as constaté en une ligne et passe la sous-étape en validee avec la citation de l'utilisateur qui t'a donné l'accès, ou en a_valider s'il doit le confirmer."
+        },
+        {
+          "id": "E1.3",
+          "titre": "Les consignes réelles",
+          "qui": "moi",
+          "sortie": ["docs/agent/consignes-reelles.jsonl", "docs/agent/catalogue.json"],
+          "consigne": "Si des consignes réelles existent déjà dans la run (docs/agent/consignes-reelles.jsonl), dis combien et d'où elles viennent, en une ligne, et propose en A/B/C/D : A s'en servir telles quelles / B faire en plus une séance d'usage de dix minutes / C faire une séance à la place / D autre chose. Sinon, la séance d'usage réel : l'utilisateur se sert de son outil une dizaine de minutes en te parlant, chaque consigne s'ajoute au fichier avec son attendu. Écris docs/agent/catalogue.json depuis l'outil réel. Sa réponse valide la sous-étape."
+        },
+        {
+          "id": "E1.4",
+          "titre": "La limite de la machine",
+          "qui": "agent",
+          "sortie": ["docs/agent/reponses.json"],
+          "consigne": "Une question en A/B/C/D sur la taille et le temps de réponse maximaux, et la machine où l'agent tournera ; si une limite est déjà connue pour ce projet, elle est l'option A. Écris la clé `machine` de docs/agent/reponses.json (citation, taille_max_go, latence_max_s, machine). Sa réponse valide la sous-étape."
+        },
+        {
+          "id": "E1.5",
+          "titre": "Ce qui rend un palier prêt",
+          "qui": "agent",
+          "sortie": ["docs/agent/reponses.json"],
+          "consigne": "Une question en A/B/C/D : A toutes ses consignes de test réussies / B 9 sur 10 sans aucune action à tort / C 8 sur 10 avec au plus une action à tort / D autre chose. Écris la clé `critere` de docs/agent/reponses.json (citation, reussite_min, actions_a_tort_max) et les clés `besoin` et `acces` avec leurs citations. Sa réponse valide la sous-étape."
+        },
+        {
+          "id": "E1.6",
+          "titre": "Le palier 1",
+          "qui": "programme",
+          "sortie": ["docs/agent/paliers.json", "docs/agent/palier-1.md"],
+          "consigne": "Sans aucune question : choisis le palier 1 (une dizaine de commandes, les plus utiles d'après les consignes réelles) et son test (les consignes réelles de ces commandes, plus des consignes « proposer » et « rien » proches). Écris docs/agent/paliers.json et docs/agent/palier-1.md, puis MONTRE-le en 5 lignes au plus. Une dernière ligne propose l'option : « Si tu veux, on écrit toute la feuille de route des paliers ; sinon je lance. » Puis appelle `cloturer` : le programme passe le contrôle de l'étape ; s'il est rouge, corrige ce qu'il dit et rappelle `cloturer`. Ensuite lance la construction (outil `lancer`), sauf si l'utilisateur veut la feuille de route."
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "titre": "Construire un palier",
+      "resume": "Le palier se construit seul sur le serveur : ses données, l'entraînement, un vérificateur indépendant qui rejoue les vraies consignes dans le vrai outil, puis la préversion et sa fiche.",
+      "sous_etapes": [
+        {
+          "id": "E2.1",
+          "titre": "Données et entraînement",
+          "qui": "programme",
+          "sortie": ["docs/agent/avancement.json"],
+          "consigne": "Lancée par le bouton du volet ou l'outil `lancer`. Rien à faire en conversation : le volet suit l'avancement."
+        },
+        {
+          "id": "E2.2",
+          "titre": "Vérification et préversion",
+          "qui": "programme",
+          "sortie": ["docs/agent/versions.json"],
+          "consigne": "Un vérificateur qui n'a pas construit rejoue le test du palier dans le vrai outil ; sur PASS, la préversion est livrée avec sa fiche « sait faire / ne sait pas encore »."
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "titre": "Revue",
+      "resume": "L'utilisateur essaie la préversion dans son outil. « Bon » la passe en production, puis palier suivant ou arrêt ; sinon ses retours relancent la construction sur ce palier.",
+      "sous_etapes": [
+        {
+          "id": "E3.1",
+          "titre": "L'essai de la préversion",
+          "qui": "moi",
+          "sortie": ["docs/agent/revue.json"],
+          "consigne": "Montre la fiche de la préversion et où l'essayer. L'utilisateur l'essaie dans son outil. S'il dit que c'est bon : mets en production (commande `production` de docs/agent/acces-outil.json, fiche affichée dans l'outil), écris docs/agent/production.json et le statut `production` dans paliers.json, puis demande la suite en A/B/C/D (A palier suivant : tu le proposes et le montres / B arrêt / D autre chose) et appelle l'outil `revue` verdict good avec `suite`. Sinon : reprends chaque retour (une question à la fois si un retour est ambigu), outil `retours` avec la liste (dit = ses mots exacts, consigne = ce qu'il a essayé, attendu = un critère vérifiable dans l'outil), puis outil `revue` verdict retours : la construction repart toute seule sur ce palier."
+        }
+      ]
+    }
+  ]
+}
