@@ -1,4 +1,6 @@
-# Pipeline agent en 3 étapes — contrat entre le graphe, les commandes et le module
+# Three-stage agent pipeline: contract between the graph, the commands and the module
+
+> This document is in French.
 
 Ce fichier fixe ce que chaque morceau lit et écrit, pour que le
 graphe (`workflows/agent.json` + skills `agent-*`), les commandes (`tools/agent-lancer.py`, `tools/agent-etat.py`) et

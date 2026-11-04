@@ -1,4 +1,6 @@
-# Agent — module Claude Code
+# Agent: Claude Code module
+
+> This document is in French.
 
 Conduit une run de la pipeline agent en 3 étapes, du besoin au dernier palier en production (fichiers et commandes :
 `docs/contrat.md` ; graphe : `workflows/agent.json`, à la racine du dépôt). Un agent se construit par paliers : chaque palier est construit seul, livré en

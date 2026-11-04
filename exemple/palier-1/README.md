@@ -1,4 +1,6 @@
-# Exemple : l'entraînement d'un palier avec La boucle
+# Example: training one step with La boucle
+
+> This document is in French.
 
 Données et programmes **inventés** : un assistant pour la « Médiathèque de Valbourg » (fictive), palier 1 = deux commandes
 (`ouvrir_prets`, `prolonger_pret`). Le sujet est un interpréteur à règles (`sujet.py`) ; le harnais, `harnais-0/regles.json`,
