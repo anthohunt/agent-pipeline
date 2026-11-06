@@ -1,5 +1,7 @@
 **English** · [Français](README.fr.md)
 
+**Anthony Hunt** · [Project page on ingevision.cloud](https://ingevision.cloud/?lang=en&p=pipeline) · [LinkedIn](https://www.linkedin.com/in/anthony-hunt-3948a9196) · [GitHub profile](https://github.com/anthohunt)
+
 # agent-pipeline
 
 A three-stage agent pipeline that builds a specialised agent **step by step** (*paliers*), the way software is built: a
