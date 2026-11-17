@@ -11,16 +11,16 @@
 ## Ce qu'on fait avec
 
 - **Ouvrir une run.** `/agent <projet>` dans Claude Code ouvre un volet de suivi et une bande au-dessus de l'invite (dossier `mod/`) ; sans le mod, le skill `/agent-start`.
-- **Concevoir en conversation.** Quatre questions au plus : le besoin mot pour mot, l'accès à votre vrai outil (rejoué une fois pour de vrai), vos consignes réelles, la limite de votre machine, la règle de réussite. L'agent propose ensuite le palier 1 : des commandes et leur test.
-- **Construire un palier seul.** `tools/agent-lancer.py` relance l'étape 2 jusqu'à son contrôle vert. Un constructeur écrit les données du palier et entraîne l'agent avec [La boucle](https://github.com/anthohunt/la-boucle-engine), noté sur un examen tenu à part ; le test du palier n'entre jamais dans l'entraînement.
-- **Un verdict indépendant.** Un agent neuf, qui n'a rien construit, rejoue chaque consigne du test dans votre vrai outil et compte ce que l'outil a vraiment fait. Le contrôle de la construction recalcule la réussite et les actions à tort depuis ces résultats : un verdict qui ne concorde pas échoue.
+- **Concevoir en conversation.** Quatre questions au plus : le besoin mot pour mot, l'accès à votre vrai outil (rejoué une fois pour de vrai), la limite de votre machine, ce qui rend un palier prêt ; vos consignes réelles sont gardées comme test. L'agent propose ensuite le palier 1 : des commandes.
+- **Construire un palier seul.** `tools/agent-lancer.py` relance l'étape 2 jusqu'à son contrôle vert (6 passes au plus ; arrêt après 3 sans progrès). Un constructeur écrit les données du palier et entraîne l'agent avec [La boucle](https://github.com/anthohunt/la-boucle-engine), noté sur un examen tenu à part ; le test du palier n'entre jamais dans l'entraînement.
+- **Un verdict indépendant.** Lancé par le chef, un agent qui n'a rien construit compte ce que l'outil a vraiment fait pour chaque consigne du test. Le contrôle de la construction recalcule la réussite et les actions à tort depuis ces résultats : un verdict qui ne concorde pas échoue.
 - **Vous décidez.** Vous essayez la préversion avec sa fiche « sait faire / ne sait pas encore ». « Bon » la met en production, puis palier suivant ou arrêt ; des retours, gardés mot pour mot, relancent la construction.
 
 ## Architecture
 
 ![Architecture de agent-pipeline : vous donnez le besoin à l'étape Concevoir dans votre session Claude Code ; le moteur flux contrôle chaque étape et relance la construction jusqu'au vert ; le constructeur entraîne le palier avec La boucle ; un vérificateur neuf rejoue le test dans votre vrai outil et son verdict est recalculé ; sur PASS la préversion part en revue, et vous l'essayez dans votre outil](docs/architecture.svg)
 
-*La pipeline est jouée par [flux](https://github.com/anthohunt/flux), un moteur de pipelines d'agents (dépôt séparé).*
+*La pipeline est jouée par [flux](https://github.com/anthohunt/flux), un moteur de pipelines d'agents (dépôt séparé). Schéma en anglais : [architecture.en.svg](docs/architecture.en.svg).*
 
 ## Démarrage
 
@@ -34,7 +34,7 @@ python3 -m pip install -r vendor/flux/requirements.txt   # jsonschema
 bash exemple/demo.sh   # de bout en bout en quelques secondes, sans compte ni modèle d'IA
 ```
 
-`demo.sh` crée une run inventée dans `~/agent-runs`, montre le contrôle de l'étape 1 rouge sur une run vide puis les trois contrôles verts sur une run finie d'exemple, demande au lanceur ce qu'il ferait, puis entraîne un palier avec La boucle (note de 50 à 85 sur l'examen tenu à part).
+`demo.sh` crée une run inventée dans `~/agent-runs`, montre le contrôle de l'étape 1 rouge sur une run vide puis les trois contrôles verts sur une run finie d'exemple, demande au lanceur ce qu'il ferait, puis entraîne un palier avec La boucle (note de 50 à 85).
 
 <details><summary>Prérequis, réglages, tests, contenu du dépôt</summary>
 
@@ -48,8 +48,8 @@ bash exemple/demo.sh   # de bout en bout en quelques secondes, sans compte ni mo
 
 ## État
 
-- **Depuis octobre 2026.** Construite le 24 octobre 2026 ; dépôt public depuis le 26 octobre.
-- **Une vraie run.** Un agent pour une appli web privée de modélisation de décisions. Palier 1 (177 commandes) en production le 26 octobre 2026 : 364 phrases de test sur 394 réussies (92,4 %), aucune action à tort. Palier 2 pas tenu : au mieux 84,6 % et 1 action à tort, pour une règle de 90 % et 0 jamais baissée. Run en pause depuis le 4 novembre 2026.
+- **Depuis octobre 2026.** Dépôt public depuis le 26 octobre.
+- **Une vraie run.** Un petit agent (modèle de 0,8 milliard de paramètres + harnais, entraîné sans La boucle) pour une appli web privée de modélisation de décisions, rejoué dans une copie de test de l'appli ; phrases de test écrites par l'agent à la demande de l'utilisateur. Palier 1 (177 commandes) accepté le 26 octobre 2026 : 364 sur 394 réussies (92,4 %) et aucune action à tort, une fois les seules différences de majuscules admises par l'utilisateur. Palier 2 : aucun candidat à 90 % sans action à tort. En pause depuis le 4 novembre 2026.
 - **Licences.** Code sous Apache 2.0 (`LICENSE`, `NOTICE`) ; skills, documentation et schémas sous CC BY 4.0 (`LICENSE-docs`). Tiers : [THIRD-PARTY.md](THIRD-PARTY.md).
 
 ---

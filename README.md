@@ -11,9 +11,9 @@
 ## Using it
 
 - **Start a run.** `/agent <project>` in Claude Code opens a tracking pane and a band above the prompt (the `mod/` folder); without the mod, the `/agent-start` skill.
-- **Design in conversation.** Four questions at most: the need word for word, access to your real tool (replayed once for real), your real instructions, your machine's limit, the success rule. The agent then proposes step 1: a set of commands and its test.
-- **Build a step on its own.** `tools/agent-lancer.py` restarts stage 2 until its check is green. A builder writes the step's data and trains the agent with [La boucle](https://github.com/anthohunt/la-boucle-engine), scored on a held-out exam; the step's test never enters training.
-- **An independent verdict.** A fresh agent that built nothing replays every test instruction in your real tool and counts what the tool actually did. The build check recomputes the success rate and the wrongful actions from those results: a verdict that does not match fails.
+- **Design in conversation.** Four questions at most: the need word for word, access to your real tool (replayed once for real), your machine's limit, what makes a step ready; your real instructions are recorded as the test. The agent then proposes step 1: a set of commands.
+- **Build a step on its own.** `tools/agent-lancer.py` restarts stage 2 until its check is green (at most 6 passes; it stops after 3 without progress). A builder writes the step's data and trains the agent with [La boucle](https://github.com/anthohunt/la-boucle-engine), scored on a held-out exam; the step's test never enters training.
+- **An independent verdict.** Started by the lead, an agent that built nothing counts what the tool actually did for each test instruction. The build check recomputes the success rate and the wrongful actions from those results: a verdict that does not match fails.
 - **You decide.** You try the preview with its "can do / cannot do yet" sheet. "Good" puts it in production, then the next step or a stop; feedback, kept word for word, sends the build back.
 
 ## Architecture
@@ -34,7 +34,7 @@ python3 -m pip install -r vendor/flux/requirements.txt   # jsonschema
 bash exemple/demo.sh   # end to end in a few seconds, no account, no AI model
 ```
 
-`demo.sh` creates an invented run in `~/agent-runs`, shows the stage 1 check red on an empty run and all three checks green on a finished sample, asks the launcher what it would do, then trains one step with La boucle (score from 50 to 85 on the held-out exam).
+`demo.sh` creates an invented run in `~/agent-runs`, shows the stage 1 check red on an empty run and all three checks green on a finished sample, asks the launcher what it would do, then trains one step with La boucle (score from 50 to 85).
 
 <details><summary>Requirements, settings, tests, repository</summary>
 
@@ -48,8 +48,8 @@ bash exemple/demo.sh   # end to end in a few seconds, no account, no AI model
 
 ## Status
 
-- **Since October 2026.** Built on 24 October 2026; public repository since 26 October.
-- **One real run.** An agent for a private decision-modelling web app. Step 1 (177 commands) in production on 26 October 2026: 364 of 394 test sentences right (92.4 %), no wrongful action. Step 2 not passed: best 84.6 % with 1 wrongful action, against a rule of 90 % and 0 that is never lowered. Run paused since 4 November 2026.
+- **Since October 2026.** Public repository since 26 October.
+- **One real run.** A small agent (0.8 B model + harness, trained without La boucle) for a private decision-modelling web app, replayed in a test copy of the app; test sentences written by the agent at the user's request. Step 1 (177 commands) accepted on 26 October 2026: 364 of 394 right (92.4 %) and no wrongful action, once the user allowed case-only differences. Step 2: no candidate reached 90 % with 0 wrongful action. Paused since 4 November 2026.
 - **Licences.** Code under Apache 2.0 (`LICENSE`, `NOTICE`); skills, docs and diagrams under CC BY 4.0 (`LICENSE-docs`). Third parties: [THIRD-PARTY.md](THIRD-PARTY.md).
 
 ---
