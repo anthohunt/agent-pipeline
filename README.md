@@ -18,9 +18,15 @@
 
 ## Architecture
 
-![agent-pipeline architecture: you give the need to the design stage in your Claude Code session; the flux engine checks each stage and restarts the build until green; the builder trains the step with La boucle; a fresh verifier replays the test in your real tool and its verdict is recomputed; on PASS the preview goes to review, and you try it in your tool](docs/architecture.en.svg)
+![agent-pipeline architecture: you give the need to the design stage in your Claude Code session; the flux engine checks each stage and restarts the build until green; the builder trains the step with La boucle; a fresh verifier replays the test in your real tool and its verdict is recomputed; on PASS the preview goes to review, and you try it in your tool](docs/architecture.svg)
 
-*The pipeline is played by [flux](https://github.com/anthohunt/flux), an agent pipeline engine (separate repository). Diagram in French: [architecture.svg](docs/architecture.svg).*
+<details><summary>French version</summary>
+
+![Architecture de agent-pipeline : vous donnez le besoin à l'étape Concevoir dans votre session Claude Code ; le moteur flux contrôle chaque étape et relance la construction jusqu'au vert ; le constructeur entraîne le palier avec La boucle ; un vérificateur neuf rejoue le test dans votre vrai outil et son verdict est recalculé ; sur PASS la préversion part en revue, et vous l'essayez dans votre outil](docs/architecture.fr.svg)
+
+</details>
+
+*The pipeline is played by [flux](https://github.com/anthohunt/flux), an agent pipeline engine (separate repository).*
 
 ## Quick start
 

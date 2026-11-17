@@ -20,7 +20,13 @@
 
 ![Architecture de agent-pipeline : vous donnez le besoin à l'étape Concevoir dans votre session Claude Code ; le moteur flux contrôle chaque étape et relance la construction jusqu'au vert ; le constructeur entraîne le palier avec La boucle ; un vérificateur neuf rejoue le test dans votre vrai outil et son verdict est recalculé ; sur PASS la préversion part en revue, et vous l'essayez dans votre outil](docs/architecture.svg)
 
-*La pipeline est jouée par [flux](https://github.com/anthohunt/flux), un moteur de pipelines d'agents (dépôt séparé). Schéma en anglais : [architecture.en.svg](docs/architecture.en.svg).*
+<details><summary>Diagramme en français</summary>
+
+![Architecture de agent-pipeline : vous donnez le besoin à l'étape Concevoir dans votre session Claude Code ; le moteur flux contrôle chaque étape et relance la construction jusqu'au vert ; le constructeur entraîne le palier avec La boucle ; un vérificateur neuf rejoue le test dans votre vrai outil et son verdict est recalculé ; sur PASS la préversion part en revue, et vous l'essayez dans votre outil](docs/architecture.fr.svg)
+
+</details>
+
+*La pipeline est jouée par [flux](https://github.com/anthohunt/flux), un moteur de pipelines d'agents (dépôt séparé).*
 
 ## Démarrage
 

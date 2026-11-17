@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" font-family="IBM Plex Sans, Segoe UI, Helvetica Neue, Arial, sans-serif" role="img" aria-label="Architecture de agent-pipeline">
+<title>Architecture de agent-pipeline</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1f4fd1"/></marker><marker id="ay" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#e09a00"/></marker></defs>
+<rect width="800" height="600" rx="16" fill="#ffffff"/>
+<rect x="20" y="20" width="760" height="110" rx="14" fill="#e6ebf2" stroke="#c9d1dd" stroke-dasharray="4 4"/>
+<text x="400" y="42" text-anchor="middle" fill="#5d6b82" font-size="12" font-weight="600" letter-spacing=".72">VOUS</text>
+<rect x="20" y="190" width="760" height="110" rx="14" fill="#e6ebf2" stroke="#c9d1dd" stroke-dasharray="4 4"/>
+<text x="766" y="212" text-anchor="end" fill="#5d6b82" font-size="12" font-weight="600" letter-spacing=".72">CLAUDE CODE</text>
+<rect x="20" y="360" width="760" height="220" rx="14" fill="#e6ebf2" stroke="#c9d1dd" stroke-dasharray="4 4"/>
+<text x="766" y="382" text-anchor="end" fill="#5d6b82" font-size="12" font-weight="600" letter-spacing=".72">MOTEURS</text>
+<g id="b-you" class="box"><rect x="36" y="52" width="220" height="60" rx="10" fill="#fff" stroke="#1f4fd1" stroke-width="2.2"/><text x="48" y="76" fill="#14213d" font-size="13.5" font-weight="600">Vous</text><text x="48" y="96" fill="#5d6b82" font-size="12">Claude Code · /agent</text></g>
+<g id="b-tool" class="box"><rect x="544" y="52" width="220" height="60" rx="10" fill="#fff" stroke="#1f4fd1" stroke-width="2.2"/><text x="556" y="76" fill="#14213d" font-size="13.5" font-weight="600">Votre vrai outil</text><text x="556" y="96" fill="#5d6b82" font-size="12">l'appli que l'agent pilote</text></g>
+<g id="b-design" class="box"><rect x="36" y="222" width="150" height="60" rx="10" fill="#fff" stroke="#1f4fd1" stroke-width="2.2"/><text x="48" y="246" fill="#14213d" font-size="13.5" font-weight="600">1 · Concevoir</text><text x="48" y="266" fill="#5d6b82" font-size="12">4 questions au plus</text></g>
+<g id="b-build" class="box"><rect x="232" y="222" width="150" height="60" rx="10" fill="#fff" stroke="#1f4fd1" stroke-width="2.2"/><text x="244" y="246" fill="#14213d" font-size="13.5" font-weight="600">2 · Construire</text><text x="244" y="266" fill="#5d6b82" font-size="12">chef · constructeur</text></g>
+<g id="b-verif" class="box"><rect x="428" y="222" width="150" height="60" rx="10" fill="#fff" stroke="#1f4fd1" stroke-width="2.2"/><text x="440" y="246" fill="#14213d" font-size="13.5" font-weight="600">Vérificateur</text><text x="440" y="266" fill="#5d6b82" font-size="12">neuf · n’a rien construit</text></g>
+<g id="b-review" class="box"><rect x="614" y="222" width="150" height="60" rx="10" fill="#fff" stroke="#1f4fd1" stroke-width="2.2"/><text x="626" y="246" fill="#14213d" font-size="13.5" font-weight="600">3 · Revue</text><text x="626" y="266" fill="#5d6b82" font-size="12">bon → production</text></g>
+<g id="b-flux" class="box"><rect x="36" y="392" width="250" height="60" rx="10" fill="#fff" stroke="#1f4fd1" stroke-width="2.2"/><text x="48" y="416" fill="#14213d" font-size="13.5" font-weight="600">Moteur flux</text><text x="48" y="436" fill="#5d6b82" font-size="12">lance · contrôle</text></g>
+<g id="b-boucle" class="box"><rect x="300" y="392" width="120" height="60" rx="10" fill="#fff" stroke="#1f4fd1" stroke-width="2.2"/><text x="312" y="416" fill="#14213d" font-size="13.5" font-weight="600">La boucle</text><text x="312" y="436" fill="#5d6b82" font-size="12">examen tenu à part</text></g>
+<g id="a0" class="arrow0"><path d="M382 252L428 252" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/></g>
+<g id="note"><rect x="490" y="392" width="176" height="60" rx="10" fill="none" stroke="#93a0b6" stroke-width="1.4" stroke-dasharray="5 4"/><text x="502" y="416" fill="#14213d" font-size="13" font-weight="600">FAIL ou retours</text><text x="502" y="436" fill="#5d6b82" font-size="12">retour à 2 · Construire</text></g>
+<g id="a1" class="arrow">
+<path class="trace" d="M111 112L111 222" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
+<rect x="73.7" y="157" width="74.6" height="18" rx="4" fill="#fff"/><text x="111" y="170" text-anchor="middle" fill="#1f4fd1" font-size="12" font-weight="600">le besoin</text>
+<circle cx="61.7" cy="167" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="61.7" y="171" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">1</text>
+</g>
+<g id="a2" class="arrow">
+<path class="trace" d="M111 282L111 392" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
+<rect x="52.8" y="327" width="116.4" height="18" rx="4" fill="#fff"/><text x="111" y="340" text-anchor="middle" fill="#1f4fd1" font-size="12" font-weight="600">palier 1 + test</text>
+<circle cx="40.8" cy="337" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="40.8" y="341" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">2</text>
+</g>
+<g id="a3" class="arrow">
+<path class="trace" d="M260 392L260 282" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
+<rect x="174.0" y="342" width="172.1" height="18" rx="4" fill="#fff"/><text x="260" y="355" text-anchor="middle" fill="#1f4fd1" font-size="12" font-weight="600">lanceur : jusqu'au vert</text>
+<circle cx="162.0" cy="352" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="162.0" y="356" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">3</text>
+</g>
+<g id="a4" class="arrow">
+<path class="trace" d="M360 282L360 392" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
+<rect x="326.2" y="312" width="67.7" height="18" rx="4" fill="#fff"/><text x="360" y="325" text-anchor="middle" fill="#1f4fd1" font-size="12" font-weight="600">entraîne</text>
+<circle cx="314.2" cy="322" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="314.2" y="326" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">4</text>
+</g>
+<g id="a5" class="arrow">
+<path class="trace" d="M560 222L560 112" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
+<rect x="505.3" y="157" width="109.4" height="18" rx="4" fill="#fff"/><text x="560" y="170" text-anchor="middle" fill="#1f4fd1" font-size="12" font-weight="600">rejoue le test</text>
+<circle cx="493.3" cy="167" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="493.3" y="171" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">5</text>
+</g>
+<g id="a6" class="arrow">
+<path class="trace" d="M470 282L470 500L160 500L160 452" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
+<rect x="249.8" y="490" width="130.3" height="18" rx="4" fill="#fff"/><text x="315" y="503" text-anchor="middle" fill="#1f4fd1" font-size="12" font-weight="600">verdict recalculé</text>
+<circle cx="237.8" cy="500" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="237.8" y="504" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">6</text>
+</g>
+<g id="a7" class="arrow">
+<path class="trace" d="M80 452L80 540L690 540L690 282" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
+<rect x="364.8" y="530" width="130.3" height="18" rx="4" fill="#fff"/><text x="430" y="543" text-anchor="middle" fill="#1f4fd1" font-size="12" font-weight="600">PASS : préversion</text>
+<circle cx="352.8" cy="540" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="352.8" y="544" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">7</text>
+</g>
+<g id="a8" class="arrow">
+<path class="trace" d="M256 82L544 82" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
+<rect x="352.2" y="72" width="95.5" height="18" rx="4" fill="#fff"/><text x="400" y="85" text-anchor="middle" fill="#1f4fd1" font-size="12" font-weight="600">vous essayez</text>
+<circle cx="340.2" cy="82" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="340.2" y="86" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">8</text>
+</g>
+</svg>
