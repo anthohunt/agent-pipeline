@@ -6,6 +6,12 @@
 
 [![A real run: the architecture diagram lights up arrow by arrow next to the files of the run (click for the full video)](docs/demo.gif)](https://drive.google.com/file/d/16JZCbsxif5BHSokTJLckyf_k8WhOriE5/view)
 
+<details><summary>French version</summary>
+
+[![Une vraie run : le schéma d'architecture s'allume flèche par flèche à côté des fichiers de la run (cliquer pour la vidéo complète)](docs/demo.fr.gif)](https://drive.google.com/file/d/1dxfElznnIjOWgkiLEHiA7Khc0hd_nT3p/view)
+
+</details>
+
 *A real run, October 2026: step 1 of an agent that drives a web app, from the need to production. [Full video (1:25)](https://drive.google.com/file/d/16JZCbsxif5BHSokTJLckyf_k8WhOriE5/view)*
 
 ## Using it

@@ -6,7 +6,13 @@
 
 [![Une vraie run : le schéma d'architecture s'allume flèche par flèche à côté des fichiers de la run (cliquer pour la vidéo complète)](docs/demo.gif)](https://drive.google.com/file/d/16JZCbsxif5BHSokTJLckyf_k8WhOriE5/view)
 
-*Une vraie run, octobre 2026 : le palier 1 d'un agent qui pilote une appli web, du besoin à la production ; animation en anglais. [Vidéo complète (1:25)](https://drive.google.com/file/d/16JZCbsxif5BHSokTJLckyf_k8WhOriE5/view)*
+<details><summary>Animation en français</summary>
+
+[![Une vraie run : le schéma d'architecture s'allume flèche par flèche à côté des fichiers de la run (cliquer pour la vidéo complète)](docs/demo.fr.gif)](https://drive.google.com/file/d/1dxfElznnIjOWgkiLEHiA7Khc0hd_nT3p/view)
+
+</details>
+
+*Une vraie run, octobre 2026 : le palier 1 d'un agent qui pilote une appli web, du besoin à la production. [Vidéo complète (1:25)](https://drive.google.com/file/d/1dxfElznnIjOWgkiLEHiA7Khc0hd_nT3p/view)*
 
 ## Ce qu'on fait avec
 
