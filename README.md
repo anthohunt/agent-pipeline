@@ -4,15 +4,15 @@
 
 **A Claude Code pipeline that builds a specialised agent one step at a time: a fresh verifier replays each step's test in your real tool, and nothing reaches production until you say it is good.**
 
-[![A real run: the architecture diagram lights up arrow by arrow next to the files of the run (click for the full video)](docs/demo.gif)](https://drive.google.com/file/d/16JZCbsxif5BHSokTJLckyf_k8WhOriE5/view)
+![A real run: the architecture diagram lights up arrow by arrow next to the files of the run](docs/demo.gif)
 
 <details><summary>French version</summary>
 
-[![Une vraie run : le schéma d'architecture s'allume flèche par flèche à côté des fichiers de la run (cliquer pour la vidéo complète)](docs/demo.fr.gif)](https://drive.google.com/file/d/1dxfElznnIjOWgkiLEHiA7Khc0hd_nT3p/view)
+![Une vraie run : le schéma d'architecture s'allume flèche par flèche à côté des fichiers de la run](docs/demo.fr.gif)
 
 </details>
 
-*A real run, October 2026: step 1 of an agent that drives a web app, from the need to production. [Full video (1:25)](https://drive.google.com/file/d/16JZCbsxif5BHSokTJLckyf_k8WhOriE5/view)*
+*A real run, October 2026: step 1 of an agent that drives a web app, from the need to production.*
 
 ## Using it
 

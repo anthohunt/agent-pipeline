@@ -4,15 +4,15 @@
 
 **Une pipeline Claude Code qui construit un agent spécialisé palier par palier : un vérificateur neuf rejoue le test de chaque palier dans votre vrai outil, et rien ne passe en production avant que vous disiez que c'est bon.**
 
-[![Une vraie run : le schéma d'architecture s'allume flèche par flèche à côté des fichiers de la run (cliquer pour la vidéo complète)](docs/demo.gif)](https://drive.google.com/file/d/16JZCbsxif5BHSokTJLckyf_k8WhOriE5/view)
+![Une vraie run : le schéma d'architecture s'allume flèche par flèche à côté des fichiers de la run](docs/demo.gif)
 
 <details><summary>Version française</summary>
 
-[![Une vraie run : le schéma d'architecture s'allume flèche par flèche à côté des fichiers de la run (cliquer pour la vidéo complète)](docs/demo.fr.gif)](https://drive.google.com/file/d/1dxfElznnIjOWgkiLEHiA7Khc0hd_nT3p/view)
+![Une vraie run : le schéma d'architecture s'allume flèche par flèche à côté des fichiers de la run](docs/demo.fr.gif)
 
 </details>
 
-*Une vraie run, octobre 2026 : le palier 1 d'un agent qui pilote une appli web, du besoin à la production. [Vidéo complète (1:25)](https://drive.google.com/file/d/1dxfElznnIjOWgkiLEHiA7Khc0hd_nT3p/view)*
+*Une vraie run, octobre 2026 : le palier 1 d'un agent qui pilote une appli web, du besoin à la production.*
 
 ## Ce qu'on fait avec
 
